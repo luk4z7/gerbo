@@ -1,0 +1,9 @@
+package: main
+import:
+- package: gopkg.in/mgo.v2
+  subpackages:
+  - bson
+- package: github.com/fatih/structs
+- package: github.com/mxk/go-sqlite/sqlite3
+- package: github.com/agtorre/gocolorize
+- package: github.com/jinzhu/gorm

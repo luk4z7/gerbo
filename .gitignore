@@ -1,0 +1,17 @@
+/bin
+/pkg
+/.tmp
+github.com/
+golang.org/
+gopkg.in/
+sourcegraph.com/
+.idea/
+.vscode/
+.DS_Store
+.build
+.on-save.json
+reflex
+*.swp
+src/gerbo/.cover/
+src/gerbo/coverage.html
+src/vendor
