@@ -11,7 +11,7 @@ import (
 
 func main() {
 	logs.Start()
-	operation.Start()
-
 	logs.INFO.Println("Running!")
+
+	operation.Start()
 }
