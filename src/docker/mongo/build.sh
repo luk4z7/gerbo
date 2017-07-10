@@ -25,8 +25,20 @@ mongod &
 sleep 5
 
 printf "${ORANGE}Creating user....${NC}\n"
-/usr/bin/mongo caduni --eval "db.createUser({ user: 'gerbo', pwd: '12345', roles: [ { role: 'dbOwner', db: 'gerbo' } ] })"
+/usr/bin/mongo gerbo --eval "db.createUser({ user: 'user.gerbo', pwd: '12345', roles: [ { role: 'dbOwner', db: 'gerbo' } ] })"
 
-printf "${ORANGE}Finish!${NC}\n"
+mongoimport --verbose --db gerbo --collection movies --file /var/www/insert.json
+
+cron
+touch /var/log/cron.log
+echo "* * * * * sh /remove.sh && echo 'Removing registers with min value on database sqlite by robots' >> /var/log/cron.log 2>&1" >> mycron
+echo "* * * * * sleep 15; sh /remove.sh && echo 'Removing registers with min value on database sqlite by robots' >> /var/log/cron.log 2>&1" >> mycron
+crontab mycron
+rm -rf mycron
+
+
+printf "${ORANGE}Configuration Finish!${NC}\n"
+
+tail -f /var/log/cron.log
 
 wait $!
