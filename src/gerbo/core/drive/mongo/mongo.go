@@ -11,7 +11,7 @@ import (
 
 const (
 	Host     = "mongo"
-	Username = "gerbo"
+	Username = "user.gerbo"
 	Password = "12345"
 	Database = "gerbo"
 )
