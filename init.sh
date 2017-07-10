@@ -63,7 +63,7 @@ fi
 # Docker
 if which docker > /dev/null; then
     printf "${ORANGE}DOCKER${NC}\n"
-    printf "${LIGHT_PURPLE}Generate new containers ?${NC} ${WHITE}[ ${PURPLE}1 ${WHITE}]${NC} \n${LIGHT_PURPLE}Delete all containers ?${NC} ${WHITE}  [ ${PURPLE}2 ${WHITE}]${NC} \n${LIGHT_PURPLE}Start new build ?${NC} ${WHITE}        [ ${PURPLE}3 ${WHITE}]${NC}\n${LIGHT_PURPLE}Preview the logs ?${NC} ${WHITE}       [ ${PURPLE}4 ${WHITE}]${NC}\n${LIGHT_PURPLE}Install dependencies ?${NC} ${WHITE}   [ ${PURPLE}5 ${WHITE}]${NC}\n"
+    printf "${LIGHT_PURPLE}Generate new containers ${NC} ${WHITE}[ ${PURPLE}1 ${WHITE}]${NC} \n${LIGHT_PURPLE}Delete all containers ${NC} ${WHITE}  [ ${PURPLE}2 ${WHITE}]${NC} \n${LIGHT_PURPLE}Start new build ${NC} ${WHITE}        [ ${PURPLE}3 ${WHITE}]${NC}\n${LIGHT_PURPLE}Preview the logs ${NC} ${WHITE}       [ ${PURPLE}4 ${WHITE}]${NC}\n${LIGHT_PURPLE}Install dependencies ${NC} ${WHITE}   [ ${PURPLE}5 ${WHITE}]${NC}\n${LIGHT_PURPLE}Access the shell (gerbo) ${NC}${WHITE}[ ${PURPLE}6 ${WHITE}]${NC}\n${LIGHT_PURPLE}Access the shell (mongo) ${NC}${WHITE}[ ${PURPLE}7 ${WHITE}]${NC}\n"
     read gerar
 
     if [ -n "$gerar" ]; then
@@ -102,12 +102,24 @@ if which docker > /dev/null; then
             if which glide > /dev/null; then
                 printf "${ORANGE}Install dependencies ... ${NC}\n"
                 glide install
-                mv ./vendor $(pwd)/src/
+                rm -rf $(pwd)/src/vendor
+                mv ./vendor/ $(pwd)/src/
             else
                 printf "${BLUE}Installation of glide not found${NC}\n"
                 printf "${BLUE}See more details on: https://glide.sh${NC}\n"
             fi
         fi
+
+        if [ $gerar == '6' ]; then
+            clear
+            docker exec -it gerbo bash
+        fi
+
+        if [ $gerar == '7' ]; then
+            clear
+            docker exec -it mongo bash
+        fi
+
     fi
     echo ' '
 else
