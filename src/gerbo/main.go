@@ -6,9 +6,12 @@ package main
 
 import (
 	"gerbo/lib/logs"
+	"gerbo/controllers/operation"
 )
 
 func main() {
 	logs.Start()
+	operation.Start()
+
 	logs.INFO.Println("Running!")
 }
