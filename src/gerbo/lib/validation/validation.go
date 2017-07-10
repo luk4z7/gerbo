@@ -45,3 +45,29 @@ func MustBeNotEmpty(v interface{}, require func() []string, sub func() map[strin
 	}
 	return "", nil
 }
+
+func InArrayInteger(val int, array []int) (exists bool, index int) {
+	exists = false
+	index = -1;
+	for i, v := range array {
+		if val == v {
+			index = i
+			exists = true
+			return
+		}
+	}
+	return
+}
+
+func InArrayString(val string, array []string) (exists bool, index int) {
+	exists = false
+	index = -1;
+	for i, v := range array {
+		if val == v {
+			index = i
+			exists = true
+			return
+		}
+	}
+	return
+}
