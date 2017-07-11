@@ -4,6 +4,9 @@ ENV BUILDPATH /go/src/middleware-jwt
 ENV TOOLS /var/exec
 ENV GOBINARIES /go/bin
 
+RUN apt-get update && apt-get upgrade -y
+RUN apt-get install -y htop
+
 # Install reflex
 WORKDIR $GOBINARIES
 RUN go get github.com/cespare/reflex
