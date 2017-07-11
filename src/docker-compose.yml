@@ -14,7 +14,7 @@ services:
     container_name: api
     build: ./docker/golang17
     volumes:
-     - ./middleware-jwt/:/go/src/middleware-jwt/
+     - ./:/go/src
     ports:
      - "127.0.0.1:6060:6060"
     links:
