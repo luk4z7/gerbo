@@ -7,7 +7,7 @@ package response
 
 import (
 	"encoding/json"
-	liberr "middleware-jwt/lib/error"
+	liberr "gerbo/lib/error"
 	"net/http"
 )
 
@@ -25,8 +25,7 @@ type Meta struct {
 }
 
 type Pagination struct {
-	nextUrl   string `json:"next_url"`
-	nextMaxId string `json:"next_max_id"`
+	Page   int64 `json:"page"`
 }
 
 type Headers map[string]string
