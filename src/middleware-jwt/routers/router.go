@@ -12,6 +12,6 @@ import (
 // Initialize the routes
 func InitRoutes() *mux.Router {
 	router := mux.NewRouter()
-	router = SetMoviesRoutes(router)
+	router = SetMovieRoutes(router)
 	return router
 }
