@@ -3,13 +3,29 @@ version: '2'
 services:
   gerbo:
     container_name: gerbo
-    build: ./docker/golang
+    build: ./docker/golang18
     volumes:
      - ./:/go/src
     links:
      - mongo
     depends_on:
      - mongo
+  api:
+    container_name: api
+    build: ./docker/golang17
+    volumes:
+     - ./middleware-jwt/:/go/src/middleware-jwt/
+    ports:
+     - "127.0.0.1:6060:6060"
+    links:
+     - mongo
+    depends_on:
+     - mongo
+  redis:
+   container_name: redis
+   image: redis
+   ports:
+    - "127.0.0.1:6379:6379"
   mongo:
    container_name: mongo
    build: ./docker/mongo
