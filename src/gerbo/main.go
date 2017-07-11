@@ -7,11 +7,13 @@ package main
 import (
 	"gerbo/lib/logs"
 	"gerbo/controllers/operation"
+	"runtime"
 )
 
 func main() {
 	logs.Start()
 	logs.INFO.Println("Running!")
+	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	operation.Start()
 }
