@@ -5,3 +5,8 @@ import:
   - bson
 - package: github.com/fatih/structs
 - package: github.com/agtorre/gocolorize
+- package: github.com/codegangsta/negroni
+- package: github.com/garyburd/redigo/redis
+- package: github.com/pborman/uuid
+- package: github.com/dgrijalva/jwt-go
+- package: github.com/rs/cors
