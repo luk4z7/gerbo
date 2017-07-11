@@ -11,10 +11,12 @@ import (
 	"middleware-jwt/settings"
 	"net/http"
 	"github.com/rs/cors"
+	"runtime"
 )
 
 func main() {
 	settings.Init()
+	runtime.GOMAXPROCS(runtime.NumCPU())
 
 	// Get all routes defined
 	router := routers.InitRoutes()
