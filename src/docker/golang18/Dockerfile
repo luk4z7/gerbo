@@ -37,7 +37,4 @@ ADD insert.sql /data/
 ADD entrypoint.sh /
 RUN chmod +x /entrypoint.sh
 
-ENV PORT 6060
-EXPOSE $PORT
-
 CMD ["/entrypoint.sh"]
