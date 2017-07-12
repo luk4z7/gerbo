@@ -21,31 +21,31 @@ func SetMovieRoutes(router *mux.Router) *mux.Router {
 	// Quais os gêneros com melhor avaliação média?
 	// curl -H "Content-Type: application/json" -X GET http://127.0.0.1:6060/v1/movies/genre/best | jq
 	router.Handle("/v1/movies/genre/best", negroni.New(
-		negroni.HandlerFunc(movie.BestMoviesGenres),
+		negroni.HandlerFunc(movie.ProcessRequest),
 	)).Methods("GET")
 
 	// Quais os gêneros com mais filmes?
 	// curl -H "Content-Type: application/json" -X GET http://127.0.0.1:6060/v1/movies/genre/winner | jq
 	router.Handle("/v1/movies/genre/winner", negroni.New(
-		negroni.HandlerFunc(movie.MoreMoviesGenre),
+		negroni.HandlerFunc(movie.ProcessRequest),
 	)).Methods("GET")
 
 	// Qual a avaliação média por gênero?
 	// curl -H "Content-Type: application/json" -X GET http://127.0.0.1:6060/v1/movies/rating/genre | jq
 	router.Handle("/v1/movies/rating/genre", negroni.New(
-		negroni.HandlerFunc(movie.MoviesRatingPerGenre),
+		negroni.HandlerFunc(movie.ProcessRequest),
 	)).Methods("GET")
 
 	// Qual a avaliação média por ano?
 	// curl -H "Content-Type: application/json" -X GET http://127.0.0.1:6060/v1/movies/rating/year | jq
 	router.Handle("/v1/movies/rating/year", negroni.New(
-		negroni.HandlerFunc(movie.MoviesRatingPerYear),
+		negroni.HandlerFunc(movie.ProcessRequest),
 	)).Methods("GET")
 
 	// Qual a distribuição do número de filmes produzidos por ano?
 	// curl -H "Content-Type: application/json" -X GET http://127.0.0.1:6060/v1/movies/distribution/year | jq
 	router.Handle("/v1/movies/distribution/year", negroni.New(
-		negroni.HandlerFunc(movie.MoviesDistributionPerYear),
+		negroni.HandlerFunc(movie.ProcessRequest),
 	)).Methods("GET")
 
 	// Qual a distribuição do número de filmes produzidos por década?
