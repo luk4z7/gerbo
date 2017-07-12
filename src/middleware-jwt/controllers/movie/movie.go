@@ -52,25 +52,175 @@ func BestMovies(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 }
 
 func BestMoviesGenres(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	var responseStatus = http.StatusOK
+	var errors = []liberr.Errors{}
+	var result = []string{}
 
+	data, err := movie.GetBestMoviesGenres()
+	envelope := response.Envelope(liberr.ErrorsAPI{
+		Errors: errors,
+		Url:    string(r.URL.Path),
+		Method: string(r.Method),
+	}, responseStatus, data)
+	if err != nil {
+		errors = []liberr.Errors{
+			0: {
+				Message: "An unexpected error occurred while searching the best movies",
+				Type:    "internal_error",
+			},
+		}
+		responseStatus = 500
+		envelope = response.Envelope(liberr.ErrorsAPI{
+			Errors: errors,
+			Url:    string(r.URL.Path),
+			Method: string(r.Method),
+
+		}, responseStatus, result)
+	}
+	response.Header(w, responseStatus, envelope, response.Headers{})
 }
 
 func MoreMoviesGenre(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	var responseStatus = http.StatusOK
+	var errors = []liberr.Errors{}
+	var result = []string{}
 
+	data, err := movie.GetMoreMoviesGenre()
+	envelope := response.Envelope(liberr.ErrorsAPI{
+		Errors: errors,
+		Url:    string(r.URL.Path),
+		Method: string(r.Method),
+	}, responseStatus, data)
+	if err != nil {
+		errors = []liberr.Errors{
+			0: {
+				Message: "An unexpected error occurred while searching the best movies",
+				Type:    "internal_error",
+			},
+		}
+		responseStatus = 500
+		envelope = response.Envelope(liberr.ErrorsAPI{
+			Errors: errors,
+			Url:    string(r.URL.Path),
+			Method: string(r.Method),
+
+		}, responseStatus, result)
+	}
+	response.Header(w, responseStatus, envelope, response.Headers{})
 }
 
 func MoviesRatingPerGenre(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	var responseStatus = http.StatusOK
+	var errors = []liberr.Errors{}
+	var result = []string{}
 
+	data, err := movie.GetMoviesRatingPerGenre()
+	envelope := response.Envelope(liberr.ErrorsAPI{
+		Errors: errors,
+		Url:    string(r.URL.Path),
+		Method: string(r.Method),
+	}, responseStatus, data)
+	if err != nil {
+		errors = []liberr.Errors{
+			0: {
+				Message: "An unexpected error occurred while searching the best movies",
+				Type:    "internal_error",
+			},
+		}
+		responseStatus = 500
+		envelope = response.Envelope(liberr.ErrorsAPI{
+			Errors: errors,
+			Url:    string(r.URL.Path),
+			Method: string(r.Method),
+
+		}, responseStatus, result)
+	}
+	response.Header(w, responseStatus, envelope, response.Headers{})
 }
 
 func MoviesRatingPerYear(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	var responseStatus = http.StatusOK
+	var errors = []liberr.Errors{}
+	var result = []string{}
 
+	data, err := movie.GetMoviesRatingPerYear()
+	envelope := response.Envelope(liberr.ErrorsAPI{
+		Errors: errors,
+		Url:    string(r.URL.Path),
+		Method: string(r.Method),
+	}, responseStatus, data)
+	if err != nil {
+		errors = []liberr.Errors{
+			0: {
+				Message: "An unexpected error occurred while searching the best movies",
+				Type:    "internal_error",
+			},
+		}
+		responseStatus = 500
+		envelope = response.Envelope(liberr.ErrorsAPI{
+			Errors: errors,
+			Url:    string(r.URL.Path),
+			Method: string(r.Method),
+
+		}, responseStatus, result)
+	}
+	response.Header(w, responseStatus, envelope, response.Headers{})
 }
 
 func MoviesDistributionPerYear(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	var responseStatus = http.StatusOK
+	var errors = []liberr.Errors{}
+	var result = []string{}
 
+	data, err := movie.GetMoviesDistributionPerYear()
+	envelope := response.Envelope(liberr.ErrorsAPI{
+		Errors: errors,
+		Url:    string(r.URL.Path),
+		Method: string(r.Method),
+	}, responseStatus, data)
+	if err != nil {
+		errors = []liberr.Errors{
+			0: {
+				Message: "An unexpected error occurred while searching the best movies",
+				Type:    "internal_error",
+			},
+		}
+		responseStatus = 500
+		envelope = response.Envelope(liberr.ErrorsAPI{
+			Errors: errors,
+			Url:    string(r.URL.Path),
+			Method: string(r.Method),
+
+		}, responseStatus, result)
+	}
+	response.Header(w, responseStatus, envelope, response.Headers{})
 }
 
 func MoviesDistributionPerDecade(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
+	var responseStatus = http.StatusOK
+	var errors = []liberr.Errors{}
+	var result = []string{}
 
+	data, err := movie.GetMoviesDistributionPerDecade()
+	envelope := response.Envelope(liberr.ErrorsAPI{
+		Errors: errors,
+		Url:    string(r.URL.Path),
+		Method: string(r.Method),
+	}, responseStatus, data)
+	if err != nil {
+		errors = []liberr.Errors{
+			0: {
+				Message: "An unexpected error occurred while searching the best movies",
+				Type:    "internal_error",
+			},
+		}
+		responseStatus = 500
+		envelope = response.Envelope(liberr.ErrorsAPI{
+			Errors: errors,
+			Url:    string(r.URL.Path),
+			Method: string(r.Method),
+
+		}, responseStatus, result)
+	}
+	response.Header(w, responseStatus, envelope, response.Headers{})
 }
