@@ -128,7 +128,7 @@ wrk -t12 -c200 -d30s http://127.0.0.1:6060/v1/movies/best/page/10
 
 
 ### Import database
-If you want to import the mongo database, run this command inside the container:
+If you want to import the mongo database, run this sequence of commands
 
 ```bash
 docker exec -it mongo bash
