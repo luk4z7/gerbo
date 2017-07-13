@@ -76,7 +76,6 @@ func GetBestMoviesGenres() ([]bson.M, error) {
 		{ "$addFields": bson.M{
 				"rating_average": bson.M{ "$avg": "$rating.score" },
 		}},
-		{ "$sort": bson.M{ "id": -1 } },
 		{ "$project": bson.M{
 				"genre": "$genre",
 		}},
