@@ -14,9 +14,6 @@ import (
 	"gopkg.in/mgo.v2/bson"
 )
 
-// Test HTTP benchmarking
-// see more in https://github.com/wg/wrk
-// wrk -t12 -c200 -d30s http://127.0.0.1:6060/v1/movies/best/page/10
 func BestMovies(w http.ResponseWriter, r *http.Request, next http.HandlerFunc) {
 	var responseStatus = http.StatusOK
 	var errors = []liberr.Errors{}
