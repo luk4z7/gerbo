@@ -139,6 +139,10 @@ mongoimport --verbose --db gerbo --collection movies < movies-12-07-2017.json
 ```
 
 
+### asciicast
+
+[![asciicast](https://asciinema.org/a/M7d5TlGtGAsGOqCPrHv8yu3Yq.png)](https://asciinema.org/a/M7d5TlGtGAsGOqCPrHv8yu3Yq)
+
 
 
 
