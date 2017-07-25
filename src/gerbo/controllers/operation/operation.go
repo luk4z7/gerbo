@@ -5,29 +5,16 @@
 package operation
 
 import (
-	"gerbo/core/drive/sqlite"
+	"database/sql"
+	"time"
 	"gerbo/services/operation"
-	"gerbo/lib/logs"
-	"os"
-	"sync"
 )
 
-func Start() {
-	if len(os.Args) == 2 {
-		if os.Args[1] == "--sync" {
-			logs.INFO.Println("Checking to sync...")
-
-			db := sqlite.GetDB()
-			defer db.Close()
-
-			done := make(chan struct{})
-			mu := &sync.Mutex{}
-
-			go func() {
-				operation.CheckSync(db, mu)
-				done <- struct{}{}
-			}()
-			<-done
+func Start(db *sql.DB) struct{} {
+	for {
+		select {
+			case <-time.After(time.Second * 3):
+				operation.CheckSync(db)
 		}
 	}
 }
