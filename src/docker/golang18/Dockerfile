@@ -9,6 +9,7 @@ ENV GOBINARIES /go/bin
 RUN apt-get update && apt-get upgrade -y
 RUN apt-get install -y sqlite3 libsqlite3-dev
 RUN apt-get install -y cron vim
+RUN apt-get install -y htop
 
 # Compile in folder of GOBINARIES -> /go/bin
 WORKDIR $GOBINARIES
