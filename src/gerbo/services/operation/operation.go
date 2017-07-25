@@ -11,18 +11,13 @@ import (
 	"gerbo/services/models"
 	"database/sql"
 	"log"
-	"sync"
 	"strconv"
 )
 
-func CheckSync(db *sql.DB, mu *sync.Mutex) {
-	 mu.Lock()
-	 defer mu.Unlock()
-
+func CheckSync(db *sql.DB) {
 	rows, err := movie.CheckAndGet(db)
 	if err != nil {
 		logs.INFO.Println(err.Error())
-		return
 	}
 	err = Sync(rows)
 	if err != nil {
@@ -45,7 +40,6 @@ func Sync(rows *sql.Rows) error {
 	var rating = models.Rating{}
 
 	moviesReq := new(models.MovieRequest)
-	done      := make(chan struct{})
 
 	for rows.Next() {
 		if counter == 0 {
@@ -76,12 +70,8 @@ func Sync(rows *sql.Rows) error {
 		existMovie, _ := validation.InArrayInteger(moviesReq.ID, arrayMovie)
 		if !existMovie {
 			if lastMovie != 0 && lastMovie != moviesReq.ID {
-				go func() {
 					logs.INFO.Println("movie -> ", moviesReq.ID)
 					write(moRes)
-					done <- struct{}{}
-				}()
-				<-done
 			}
 			lastMovie = moviesReq.ID
 			// add the movie in the slice
@@ -113,12 +103,8 @@ func Sync(rows *sql.Rows) error {
 
 		counter++
 		if total == counter {
-			go func() {
 				logs.INFO.Println("movie -> ", moviesReq.ID)
 				write(moRes)
-				done <- struct{}{}
-			}()
-			<-done
 		}
 	}
 
